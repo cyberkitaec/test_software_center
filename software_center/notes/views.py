@@ -8,8 +8,10 @@ from .serializers import *
 
 # Create your views here.
 
-
 class UserRegistrationView(CreateAPIView):
+    """
+    регистрация юзера
+    """
     def post(self, request, *args, **kwargs):
         user_serializer = UserSerializer(data=request.data)
         user_serializer.is_valid(raise_exception=True)
@@ -51,6 +53,7 @@ class EventDetailView(ListAPIView):
     """
     Получаем дату события по его id
     """
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request, *args, **kwargs):
         try:
@@ -65,7 +68,8 @@ class EventDeleteView(DestroyAPIView):
     """
     Удаление события
     """
-
+    permission_classes = [IsAuthenticated, ]
+    
     def delete(self, request, *args, **kwargs):
         try:
             object_to_delete = Event.objects.get(pk=kwargs['pk'])
@@ -77,3 +81,9 @@ class EventDeleteView(DestroyAPIView):
 
         return Response({"error": None, "result": HTTP_200_OK}, status=HTTP_200_OK)
 
+
+class AddUserToEventView(APIView):
+    pass
+
+class RemoveUserFromEventView(APIView):
+    pass
