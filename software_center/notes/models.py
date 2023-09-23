@@ -61,9 +61,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
-    # @property
-    # def is_staff(self):
-    #     return self.is_admin
+
+    def __unicode__(self):
+        return self.login
 
 
 
@@ -78,6 +78,9 @@ class Event(models.Model):
     class Meta:
         verbose_name = 'Событие'
         verbose_name_plural = 'Событие'
+
+    def __unicode__(self):
+        return self.title
 
     def natural_key(self):
         return self.name

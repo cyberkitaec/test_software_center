@@ -15,12 +15,13 @@ class EventAdmin(admin.ModelAdmin):
     """
     Админка событий.
     """
-    list_display = '__all__'
-    list_display_links = '__all__'
-    search_fields = '__all__'
+    # m2m field not supported
+    list_display = ['id', 'title', 'desc', 'date_of_create', 'creator',]
+    list_display_links = ['id', 'title', 'desc', 'date_of_create', 'creator',]
+    search_fields = ['id', 'title', 'desc', 'date_of_create', 'creator',]
 
 
 # Регистрируем админки
 
-admin.site.register(User)
-admin.site.register(Event)
+admin.site.register(User, UserAdmin)
+admin.site.register(Event, EventAdmin)
