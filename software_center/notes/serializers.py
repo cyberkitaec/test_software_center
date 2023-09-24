@@ -37,7 +37,7 @@ class EventSerializer(ModelSerializer):
 
 class EventDataSerializer(ModelSerializer):
     """
-    Возвращает все данные из ивент + полную дату юзеров
+    Возвращает все данные из ивент + полную дату юзеров (за исключением пароля)
     """
     name_creator = serializers.CharField(source='creator.name')
     surname_creator = serializers.CharField(source='creator.surname')
