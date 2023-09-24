@@ -13,7 +13,9 @@ $(function() {
                                         $(".name_event").html("<h2>" + data.title + "</h2>")
                                         $(".desc_event").html("<h3>" + data.desc + "</h2>")
                                         $(".date_of_event").html("<h3>" + data.date_of_create + "</h2>")
+                                        $(".creator_event").html("<h2 id='fo'>Создатель:" + data.name_creator + " " + data.surname_creator + "</h2>")
                                         $(".participants").html('<ul class="party"> <h2> Участники: </h2> </ul>')
+
                                         console.log(data.creator)
                                         $(".buttons").empty();
                                         $.each(data.participants, function(index, element) {
@@ -21,7 +23,7 @@ $(function() {
                                             if (element.id == user_id && data.creator != user_id) {
                                                 FLAG = true;
                                             }
-                                            $(".party").append('<li class="users" value="' + element.id + '">' + '<a href="#">' + element.name + " " + element.surname + "</a>" + '</li>')
+                                            $(".party").append('<li class="users" id="fo" value="' + element.id + '">' + '<a href="#">' + element.name + " " + element.surname + "</a>" + '</li>')
                                         })
                                         if (data.creator == user_id) {
                                             $(".buttons").append("<button class='delete' value='" + data.id + "'>" + "Удалить событие </button>")
@@ -51,7 +53,7 @@ $(function() {
                                                     if (element.id == user_id && data.creator != user_id) {
                                                         FLAG = true;
                                                     }
-                                                        $(".party").append('<li class="users" value="' + element.id + '">' + '<a href="#">' + element.name + " " + element.surname + "</a>" + '</li>')
+                                                        $(".party").append('<li class="users" id="fo" value="' + element.id + '">' + '<a href="#">' + element.name + " " + element.surname + "</a>" + '</li>')
                                                     })
                                                 if (data.creator == user_id) {
                                                     $(".buttons").append("<button class='delete' value='" + data.id + "'>" + "Удалить событие </button>")
