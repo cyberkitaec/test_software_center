@@ -12,5 +12,5 @@ $(document).ready(function(){
                 })
             }
         });
-    }, 5000);  // make request every second
+    }, 30000);  // make request every second
 });

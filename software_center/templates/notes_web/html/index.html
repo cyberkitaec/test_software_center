@@ -19,9 +19,8 @@
     <div class="header">
         <div class="username">
             {% if user.is_authenticated %}
-            <p class="username"> {{ user.name }} {{ user.surname }} </p>
+            <p class="username"> {{ user.name }} {{ user.surname }}  <a href='logout'> Выйти</a></p>
             <script type="text/javascript">localStorage.setItem("user_id", {{ user.id }})</script>
-            <a href='logout'> Выйти</a>
             {% else %}
             <p>Вы не авторизованны </p>
             <a href="login"> Войти </a>
@@ -42,7 +41,6 @@
                 {% for event in all_events %}
                 <li class="li_event" value="{{ event.id }}"><a href="#">{{ event.title }}</a></li>
                 {% endfor %}
-
             </ul>
             {% endif %}
 
@@ -81,6 +79,7 @@
             <div class="user_name"></div>
             <div class="date_of_registration"></div>
             <div class="date_of_birthday"></div>
+            <div class="buttons"></div>
         </div>
     </div>
     {% endblock content %}
