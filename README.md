@@ -12,11 +12,7 @@
 <code>cd software_center</code>
 <code>python manage.py runserver</code>
 <p></p>
-<h2> Импорт postman коллекции</h2>
-<p> Коллекция представленая файликом .json в репозитории</p>
-<p> Для импорта коллекции необходимо кликнуть по import</p>
-![Screenshot_3](https://github.com/cyberkitaec/test_software_center/assets/87614770/cfe691df-4710-46c7-afa7-31aba3c34332)
-<p> Затем в появившееся окно перетащить .json файл</p>
+<p><strong>Так же можно импортировать Postman коллекцию, она представлена в виде .json файла в репозитории</strong></p>
 
 
 <h1>Стэк</h1>
