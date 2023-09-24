@@ -19,7 +19,7 @@ class UserM2mSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'name', 'surname']
+        fields = ['id', 'name', 'surname', 'date_of_registration', 'date_of_birthday']
 
 
 class EventSerializer(ModelSerializer):
