@@ -83,8 +83,26 @@ class EventDeleteView(DestroyAPIView):
 
 
 class AddUserToEventView(APIView):
-    pass
+
+    def post(self, request, *args, **kwargs):
+        if not Event.objects.filter(id=request.data['event_id']).exists():
+            return Response({"error": HTTP_404_NOT_FOUND, "result": "Event object not found"}, status=HTTP_404_NOT_FOUND)
+        event = Event.objects.filter(id=request.data['event_id'])
+        if not User.objects.filter(id=request.data['user_id']).exists():
+            return Response({"error": HTTP_404_NOT_FOUND, "result": "User object not found"}, status=HTTP_404_NOT_FOUND)
+        user = User.objects.get(id=request.data['user_id'])
+        event.participants.add(user)
+        return Response({"error": None, "result": HTTP_200_OK})
 
 class RemoveUserFromEventView(APIView):
-    pass
+    def post(self, request, *args, **kwargs):
+        if not Event.objects.filter(id=request.data['event_id']).exists():
+            return Response({"error": HTTP_404_NOT_FOUND, "result": "Event object not found"}, status=HTTP_404_NOT_FOUND)
+        event = Event.objects.get(id=request.data['event_id'])
+        if not User.objects.filter(id=request.data['user_id']).exists():
+            return Response({"error": HTTP_404_NOT_FOUND, "result": "User object not found"}, status=HTTP_404_NOT_FOUND)
+        user = User.objects.get(id=request.data['user_id'])
+        event.participants.remove(user)
+        return Response({"error": None, "result": HTTP_200_OK})
+
 
