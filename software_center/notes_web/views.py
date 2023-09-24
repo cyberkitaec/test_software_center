@@ -74,6 +74,14 @@ class DeleteEventView(View):
         event.save()
         return HttpResponse(200)
 
+
+class UserDataView(View):
+
+    def get(self, request, *args, **kwargs):
+        return JsonResponse(UserM2mSerializer(User.objects.get(id=kwargs['pk'])).data,
+                            safe=False,
+                            json_dumps_params={'ensure_ascii': False})
+
 class UserLoginView(LoginView):
     """
     Авторизация на сайте

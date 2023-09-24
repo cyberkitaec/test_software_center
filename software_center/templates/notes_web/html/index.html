@@ -6,9 +6,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--    Подключаем JS файлы-->
     <script src="{% static 'js/ajax_all_events.js' %}"></script>
     <script src="{% static 'js/li_events.js' %}"></script>
     <script src="{% static 'js/buttons.js' %}"></script>
+    <script src="{% static 'js/users.js' %}"></script>
     <title>Title</title>
     {% endblock %}
 </head>
@@ -74,6 +76,11 @@
             </div>
         </div>
         <div class="participants">
+        </div>
+        <div class="user_data">
+            <div class="user_name"></div>
+            <div class="date_of_registration"></div>
+            <div class="date_of_birthday"></div>
         </div>
     </div>
     {% endblock content %}
