@@ -70,6 +70,7 @@ class RemoveUserFromEventView(View):
 class DeleteEventView(View):
     def delete(self, request, *args, **kwargs):
         event = Event.objects.get(id=kwargs['pk'])
+        event.participants.clear()
         event.delete()
         event.save()
         return HttpResponse(200)

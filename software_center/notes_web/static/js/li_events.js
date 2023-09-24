@@ -15,19 +15,20 @@ $(function() {
                                         $(".date_of_event").html("<h3>" + data.date_of_create + "</h2>")
                                         $(".participants").html('<ul class="party"> <h2> Участники: </h2> </ul>')
                                         console.log(data.creator)
-                                        if (data.creator == user_id) {
-                                            $(".buttons").append("<button class='delete' value='" + data.id + "'>" + "Удалить событие </button>")
-                                        }
+                                        $(".buttons").empty();
                                         $.each(data.participants, function(index, element) {
                                             console.log(element.id)
-                                            if (element.id == user_id) {
+                                            if (element.id == user_id && data.creator != user_id) {
                                                 FLAG = true;
                                             }
                                             $(".party").append('<li class="users" value="' + element.id + '">' + '<a href="#">' + element.name + " " + element.surname + "</a>" + '</li>')
                                         })
+                                        if (data.creator == user_id) {
+                                            $(".buttons").append("<button class='delete' value='" + data.id + "'>" + "Удалить событие </button>")
+                                        }
                                         if (FLAG) {
                                             $(".buttons").append("<button class='refuse' value='" + data.id + "'>" + "Отказаться от участия </button>")
-                                        } else {
+                                        } else if (data.creator != user_id){
                                             $(".buttons").append("<button class='agree' value='" + data.id + "'>" + "Принять участие</button>")
                                         }
                                     },
@@ -36,19 +37,33 @@ $(function() {
                                     },
                                     complete: function(){
                                         setInterval(function(){
+                                            var FLAG = false;
                                             $.ajax({
                                                 method: "GET",
                                                 url: "update/event/" + li_value.value,
                                                 dataType: "json",
                                                 success: function(data){
+
                                                 $(".participants").html('<ul class="party"> <h2> Участники: </h2> </ul>')
+                                                $(".buttons").empty();
                                                 $(".users").empty();
                                                     $.each(data.participants, function(index, element){
+                                                    if (element.id == user_id && data.creator != user_id) {
+                                                        FLAG = true;
+                                                    }
                                                         $(".party").append('<li class="users" value="' + element.id + '">' + '<a href="#">' + element.name + " " + element.surname + "</a>" + '</li>')
                                                     })
+                                                if (data.creator == user_id) {
+                                                    $(".buttons").append("<button class='delete' value='" + data.id + "'>" + "Удалить событие </button>")
+                                                }
+                                                if (FLAG) {
+                                                    $(".buttons").append("<button class='refuse' value='" + data.id + "'>" + "Отказаться от участия </button>")
+                                                } else if (data.creator != user_id){
+                                                    $(".buttons").append("<button class='agree' value='" + data.id + "'>" + "Принять участие</button>")
+                                                }
                                                 }
                                             })
-                                        }, 3000)
+                                        }, 30000)
                                     }
 
                                     });

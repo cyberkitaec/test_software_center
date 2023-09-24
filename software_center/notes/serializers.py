@@ -33,7 +33,7 @@ class EventSerializer(ModelSerializer):
         m2m_data = validated_data.pop('participants')
         instance = Event.objects.create(**validated_data)
         instance.participants.set(m2m_data)
-        return Event.objects.create(**validated_data)
+        return instance
 
 class EventDataSerializer(ModelSerializer):
     """

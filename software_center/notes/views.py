@@ -75,7 +75,7 @@ class EventDeleteView(DestroyAPIView):
             object_to_delete = Event.objects.get(pk=kwargs['pk'])
         except:
             return Response({"error": HTTP_404_NOT_FOUND, "result": "Object not found"}, status=HTTP_404_NOT_FOUND)
-
+        object_to_delete.participants.clear()
         object_to_delete.delete()
         object_to_delete.save()
 
