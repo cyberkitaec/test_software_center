@@ -5,6 +5,10 @@
     {% block title %}
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/ajax_all_events.js' %}"></script>
+    <script src="{% static 'js/li_events.js' %}"></script>
+    <script src="{% static 'js/buttons.js' %}"></script>
     <title>Title</title>
     {% endblock %}
 </head>
@@ -13,7 +17,8 @@
     <div class="header">
         <div class="username">
             {% if user.is_authenticated %}
-            <p> {{ user.name }} {{ user.surname }} </p>
+            <p class="username"> {{ user.name }} {{ user.surname }} </p>
+            <script type="text/javascript">localStorage.setItem("user_id", {{ user.id }})</script>
             <a href='logout'> Выйти</a>
             {% else %}
             <p>Вы не авторизованны </p>
@@ -24,18 +29,35 @@
         <br>
     </div>
     {% endblock header %}
+    <div class="cont">
     {% block list_events %}
     <div class="list_events">
         {% block all_events %}
         <div class="all_events">
             <h3> Все события</h3>
+            {% if user.is_authenticated %}
+            <ul class="events_a">
+                {% for event in all_events %}
+                <li class="li_event" value="{{ event.id }}"><a href="#">{{ event.title }}</a></li>
+                {% endfor %}
+
+            </ul>
+            {% endif %}
 
         </div>
         {% endblock all_events %}
         <hr>
         {% block my_events %}
+        <h3> Мои события</h3>
         <div class="my_events">
-            <h3> Мои события</h3>
+            {% if user.is_authenticated %}
+            <ul class="my_events_ul">
+                {% for item in queryset %}
+                <li class="li_event" value="{{ item.id }}"><a href="#">{{ item.title }} </a></li>
+                {% endfor %}
+
+            </ul>
+            {% endif %}
         </div>
         {% endblock my_events %}
 
@@ -43,8 +65,19 @@
     {% endblock list_events %}
     {% block content %}
     <div class="content">
+        <div class="data">
+            <div class="name_event">
+            </div>
+            <div class="desc_event">
+            </div>
+            <div class="date_of_event">
+            </div>
+        </div>
+        <div class="participants">
+        </div>
     </div>
     {% endblock content %}
+    </div>
 
 </body>
 </html>
