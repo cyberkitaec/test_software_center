@@ -3,6 +3,10 @@
 <html lang="en">
 <head>
     {% block title %}
+<!--    Подключаем google fonts, такого же как в макете не нашел, взял хоть как-то похожий-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -19,7 +23,7 @@
     <div class="header">
         <div class="username">
             {% if user.is_authenticated %}
-            <p class="username"> {{ user.name }} {{ user.surname }}  <a href='logout'> Выйти</a></p>
+            <p class="username"> <h2> {{ user.name }} {{ user.surname }}</h2>  <a href='logout'> Выйти</a></p>
             <script type="text/javascript">localStorage.setItem("user_id", {{ user.id }})</script>
             {% else %}
             <p>Вы не авторизованны </p>

@@ -12,7 +12,7 @@
 
 .list_events {
     margin-top: 2em;
-    width: 160px;
+    width: 250px;
     background-color: #D8E3AB;
     height: 100%;
     position: absolute;
@@ -44,7 +44,10 @@ ul.errorlist {display:none;}
 .content {
     margin-top: 2em;
     display: inline-block;
-    margin-left: 15em;
+    margin-left: 30em;
 }
 
-
+a, a:link, a:visited, a:active, a:link{
+    color: blue;
+    font-family: 'Rubik Dirt', cursive;
+}
