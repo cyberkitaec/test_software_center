@@ -42,6 +42,7 @@ class EventDataSerializer(ModelSerializer):
     name_creator = serializers.CharField(source='creator.name')
     surname_creator = serializers.CharField(source='creator.surname')
     participants = UserM2mSerializer(read_only=True, many=True)
+
     class Meta:
         model = Event
         fields = ['id', 'title', 'desc', 'date_of_create', 'name_creator', 'surname_creator', 'participants']

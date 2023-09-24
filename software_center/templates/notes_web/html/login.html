@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{% if form.errors %}
+<script type="text/javascript">
+var err = "";
+   {% for field in form %}
+      {% for error in field.errors %}
+      console.log(err)
+          err += "{{ error|escape }}" + "\n"
+      {% endfor %}
+   {% endfor %}
+alert(err)
+</script>
+{% block content %}
+    <div class="card mb-3 border-0 nth-shadow">
+        <div class="card-body">
+            <div class="card-title nth-card-title">
+                <h4>Авторизация на сайте</h4>
+            </div>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-grid gap-2 d-md-block mt-2">
+                <button type="submit" class="btn btn-dark">Авторизоваться</button>
+             </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -87,3 +87,4 @@ class AddUserToEventView(APIView):
 
 class RemoveUserFromEventView(APIView):
     pass
+

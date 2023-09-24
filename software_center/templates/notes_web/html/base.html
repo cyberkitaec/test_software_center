@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% block title %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Title</title>
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+    <div class="header">
+        <a href="#"> Выйти</a>
+        <a href="#"> Регистрация</a>
+        <br>
+    </div>
+    {% endblock header %}
+    {% block list_events %}
+    <div class="list_events">
+        {% block all_events %}
+        <div class="all_events">
+
+        </div>
+        {% endblock all_events %}
+        <hr>
+        {% block my_events %}
+        <div class="my_events">
+        </div>
+        {% endblock my_events %}
+
+    </div>
+    {% endblock list_events %}
+    {% block content %}
+    <div class="content">
+    </div>
+    {% endblock content %}
+
+</body>
+</html>

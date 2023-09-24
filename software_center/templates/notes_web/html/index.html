@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% block title %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Title</title>
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+    <div class="header">
+        <div class="username">
+            {% if user.is_authenticated %}
+            <p> {{ user.name }} {{ user.surname }} </p>
+            <a href='logout'> Выйти</a>
+            {% else %}
+            <p>Вы не авторизованны </p>
+            <a href="login"> Войти </a>
+            <a href="registration"> Регистрация</a>
+            {% endif %}
+        </div>
+        <br>
+    </div>
+    {% endblock header %}
+    {% block list_events %}
+    <div class="list_events">
+        {% block all_events %}
+        <div class="all_events">
+            <h3> Все события</h3>
+
+        </div>
+        {% endblock all_events %}
+        <hr>
+        {% block my_events %}
+        <div class="my_events">
+            <h3> Мои события</h3>
+        </div>
+        {% endblock my_events %}
+
+    </div>
+    {% endblock list_events %}
+    {% block content %}
+    <div class="content">
+    </div>
+    {% endblock content %}
+
+</body>
+</html>

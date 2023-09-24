@@ -1,0 +1,22 @@
+.header {
+    width: 100%;
+	background: #D8E3AB;
+	height: 70px;
+}
+
+.list_events {
+    margin-top: 2em;
+    width: 160px;
+    background-color: #D8E3AB;
+    height: 100%;
+    position: fixed;
+    border-right: 2px solid gray;
+}
+
+.errorlist {
+    visibility: hidden;
+    display: none;
+    list-style: none;
+}
+
+ul.errorlist {display:none;}
