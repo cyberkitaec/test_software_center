@@ -1,4 +1,6 @@
 # test_software_center
+<h1> Задание </h1>
+https://drive.google.com/file/d/1LPiKXbWoZqGhX7tP-J74IzA6_jKumPSi/view
 <h1> Установка и запуск </h1>
 <p>Создайте виртуальную среду</p>
 <code> python -m venv env </code>
